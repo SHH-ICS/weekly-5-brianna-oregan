@@ -4,18 +4,33 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <title>Welcome Page</title>
+    <title>Pi Calculation Result</title>
   </head>
 
   <body>
-    
+    <h3>Pi Calculation Result</h3>
+
     <?php
-    $myVariable = "";
-    if ( isset( $_POST['myVariable'] ) ){
-      $myVariable = $_POST['myVariable'];
+    //function to calculate Pi using the Gregory-Leibniz series
+    function calculatePi($terms) {
+      $answer = 0;
+      for ($i = 0; $i < $terms; $i++) {
+        $answer += 4 * ((-1) ** $i) / (2 * $i + 1);
+      }
+      return $answer;
     }
-    echo "<h1>My Program</h1>\n";
-    echo "<p>My Variable is = ".$myVariable."</p>\n";
+
+    if ( isset( $_POST['digits'] ) ){
+      $digits = $_POST['digits'];
+      if (is_numeric($digits) && $digits > 0) {
+        $pi = calculatePi((int)$digits);
+        echo "<h2>The calculated value of Pi is: $pi</h2>";
+      } else {
+        echo "<p>Please enter a positive number.</p>";
+      }
+    } else {
+      echo "<p>No input provided. Please go back and try again.</p>";
+    }
     ?>
     
   </body>
