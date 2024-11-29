@@ -3,7 +3,7 @@
 
 <head>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.red-blue.min.css">
   <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <title>Pi Calculation Result</title>
 </head>
@@ -34,12 +34,10 @@
           $digits = $_POST['digits'];
           if (is_numeric($digits) && $digits > 0) {
             $pi = calculatePi((int)$digits);
-            echo "<h2>The calculated value of Pi is: $pi</h2>";
+            echo "<h2>$pi</h2>";
           } else {
-            echo "<p>Please enter a positive number.</p>";
+            echo "<p>Error. Must enter a positive number.</p>";
           }
-        } else {
-          echo "<p>No input provided. Please go back and try again.</p>";
         }
         ?>
 
